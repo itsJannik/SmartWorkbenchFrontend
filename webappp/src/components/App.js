@@ -6,10 +6,17 @@ import styled from 'styled-components';
 
 const AppWrapper = styled.div`
   background-color: #c19a6b;
+  height: 100vh;
+  width: 100vw;
   /* this is a grid container */
   display: grid;
   /* one grid-column */
-  grid-template-columns: auto;
+  grid-template-columns: 100%;
+  grid-template-rows: 10% 80% 10%;
+
+  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 `
 class App extends React.Component {
 
@@ -25,20 +32,9 @@ class App extends React.Component {
     /* Loading Simulation */
     this.setState({
       isLoading: true,
+      data: {},
     })
     /* fetch data here */
-    // this.setState({
-    //   data: [
-    //     [{
-    //       ContentTitle: "",
-    //       ContentImage: "",
-    //       ContentDescription: {
-    //         ContentDescriptionHeading: "",
-    //         ContentDescriptionBody: "",
-    //       },
-    //     }],
-    //   ],
-    // });
     this.setState({
       data: {
         manuals: [{
@@ -84,7 +80,7 @@ class App extends React.Component {
   render() {
     return (
       <AppWrapper>
-        <Header />
+        <Header manualTitles={["Dach bauen", "Legomännchen bauen"]}/> 
         <Main />
         <Footer />
       </AppWrapper>

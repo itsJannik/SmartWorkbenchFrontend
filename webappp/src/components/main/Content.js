@@ -25,4 +25,4 @@ const Content = (props) => (
     </ContentWrapper>
 )
 
-export default Content
+export default Content;

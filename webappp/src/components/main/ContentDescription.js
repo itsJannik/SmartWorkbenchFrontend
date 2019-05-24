@@ -21,3 +21,5 @@ const ContentDescription = (props) => (
         </ContentDescriptionBody>
     </ContentDescriptionWrapper>
 )
+
+export default ContentDescription;

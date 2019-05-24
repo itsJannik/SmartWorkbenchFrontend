@@ -9,7 +9,7 @@ const MainWrapper = styled.main`
     /* this is a grid container */
     display: grid;
     /* one grid-column */
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 10% 80% 10%;
 `
 
 const Main = (props) => (
