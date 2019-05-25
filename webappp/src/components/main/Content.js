@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import legoMan_headAndBody from '../../data/legoMan/headAndBody.png';
+import legoManInstruction from '../../data/legoMan/legoInstruction.png';
 
 const ContentWrapper = styled.section`
     /* one grid-column */
@@ -19,7 +19,7 @@ const Content = (props) => (
         <ContentTitle>
         Kopf und Körper zusammensetzen
         </ContentTitle>
-        <ContentImage src={legoMan_headAndBody} />
+        <ContentImage src={legoManInstruction} />
         <ContentDescription>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
         </ContentDescription>
