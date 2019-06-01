@@ -5,7 +5,7 @@ import Footer from './footer/Footer';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
-  background-color: #c19a6b;
+  background-color: #ffffff;
   height: 100vh;
   width: 100vw;
   /* this is a grid container */
@@ -13,7 +13,7 @@ const AppWrapper = styled.div`
   /* one grid-column */
   grid-template-columns: 100%;
   grid-template-rows: 10% 80% 10%;
-
+  
   box-sizing: border-box;
     padding: 0;
     margin: 0;
