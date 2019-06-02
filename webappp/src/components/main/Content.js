@@ -9,6 +9,7 @@ const ContentWrapper = styled.section`
 const ContentTitle = styled.h1`
 `
 const ContentImage = styled.img`
+    max-width: 100%;
 `
 
 const ContentDescription = styled.p`

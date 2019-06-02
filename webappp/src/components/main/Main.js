@@ -2,11 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import Content from './Content';
 
-const StepButton = styled.button`
+const StepButton = styled.a`
+    text-decoration: none;
+    display: inline-block;
     color: #777777;
     background-color: #eeeeee;
     height: 20%;
     font-size: 10em;
+    text-align: center;
+    line-height: 0.4;
     /* display: grid;
     align-content: center; */
 `
@@ -21,7 +25,9 @@ const MainWrapper = styled.main`
 const Main = (props) => (
     <MainWrapper>
         <StepButton>
-            &#8249;
+            {/* <span> */}
+                &#8249;
+            {/* </span> */}
         </StepButton>
         <Content />
         <StepButton>
