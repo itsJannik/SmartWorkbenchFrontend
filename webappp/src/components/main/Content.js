@@ -6,7 +6,7 @@ const ContentWrapper = styled.section`
     /* one grid-column */
     grid-template-columns: auto;
 `
-const ContentTitle = styled.h1`
+const ContentTitle = styled.h2`
 `
 const ContentImage = styled.img`
     max-width: 100%;

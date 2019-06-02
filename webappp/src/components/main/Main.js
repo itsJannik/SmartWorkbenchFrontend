@@ -11,6 +11,14 @@ const StepButton = styled.a`
     font-size: 10em;
     text-align: center;
     line-height: 0.4;
+    border-radius: 10%;
+    margin-right: 10%;
+    margin-left: 10%;
+    &:hover {
+        color: #eeeeee;
+        background-color: #777777;
+        cursor: pointer;
+    }
     /* display: grid;
     align-content: center; */
 `
@@ -25,9 +33,7 @@ const MainWrapper = styled.main`
 const Main = (props) => (
     <MainWrapper>
         <StepButton>
-            {/* <span> */}
                 &#8249;
-            {/* </span> */}
         </StepButton>
         <Content />
         <StepButton>

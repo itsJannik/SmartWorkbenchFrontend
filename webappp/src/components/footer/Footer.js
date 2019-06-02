@@ -3,14 +3,24 @@ import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
     text-align: center;
+    display: grid;
+    grid-template-columns: auto ;
+    justify-content: space-evenly;
+    align-content: center;
+    background-color: #777777;
+    color: #eeeeee;
 `
 const FooterLink = styled.a`
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 `
 
 const Footer = (props) => (
     <FooterWrapper>
         <FooterLink>
-            guck hier
+            Hilfe
         </FooterLink>
     </FooterWrapper>
 )

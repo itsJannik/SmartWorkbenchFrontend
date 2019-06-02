@@ -13,8 +13,10 @@ const HeaderWrapper = styled.header`
 const HeaderDropdown = styled.select`
     background-color: #eeeeee;
     color: #777777;
+    /* this should allow the dropdown to be scalable */
+    -webkit-appearance: menulist-button;
 `
-const HeaderTitle = styled.h3`
+const HeaderTitle = styled.h1`
     justify-self: start;
 `
 
