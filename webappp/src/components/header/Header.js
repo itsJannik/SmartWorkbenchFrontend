@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
+import uniqid from 'uniqid';
 
 const HeaderWrapper = styled.header`
     display: grid;
@@ -20,15 +22,20 @@ const HeaderTitle = styled.h1`
     justify-self: start;
 `
 
-const Header = (props) => (
+const Header = ({ manualTitles, onChange }) => (
     <HeaderWrapper>
         <HeaderTitle>
             Smart Workbench
             </HeaderTitle>
-        <HeaderDropdown>
-            <option>Legohaus</option>
+        <HeaderDropdown onChange={onChange}>
+            {manualTitles.map((manualTitle) => (
+                <option value={manualTitle} key={uniqid()}>
+                        {manualTitle}
+                </option>
+            ))}
+
         </HeaderDropdown>
     </HeaderWrapper>
 )
 
-export default Header;
+export default withRouter(Header);
