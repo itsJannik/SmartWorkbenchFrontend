@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, withRouter } from 'react-router-dom';
 import uniqid from 'uniqid';
 
 const HeaderWrapper = styled.header`
@@ -22,20 +22,41 @@ const HeaderTitle = styled.h1`
     justify-self: start;
 `
 
-const Header = ({ manualTitles, onChange }) => (
-    <HeaderWrapper>
-        <HeaderTitle>
-            Smart Workbench
+class Header extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedOption: ""
+        };
+    }
+    onChange = (e) => {
+        this.props.history.push(`/${e.target.value}`);
+        this.setState({
+            selectedOption: e.target.value
+        })
+        console.log(e.target)
+    }
+    render() {
+        const { manualTitles } = this.props
+        return (            
+            <HeaderWrapper>
+                <HeaderTitle>
+                    Smart Workbench
             </HeaderTitle>
-        <HeaderDropdown onChange={onChange}>
-            {manualTitles.map((manualTitle) => (
-                <option value={manualTitle} key={uniqid()}>
-                        {manualTitle}
-                </option>
-            ))}
+                <HeaderDropdown  value={this.state.selectedOption} onChange={this.onChange}>
+                    <option value="" hidden>Bauplan</option>
+                    {manualTitles.map((manualTitle) => (
+                        <option value={encodeURIComponent(manualTitle.toLowerCase())} 
+                        key={uniqid()}
+                        /*selected={encodeURIComponent(manualTitle.toLowerCase()) == this.state.selectedOption}*/>
+                            {manualTitle}
+                        </option>
+                    ))}
+                </HeaderDropdown>
+            </HeaderWrapper>
+        )
+    }
+}
 
-        </HeaderDropdown>
-    </HeaderWrapper>
-)
-
+// export default withRouter(Header);
 export default withRouter(Header);

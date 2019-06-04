@@ -24,7 +24,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.onChange = this.onChange.bind(this);
+    // this.onChange = this.onChange.bind(this);
     this.state = {
       data: {},
       isLoading: false,
@@ -96,18 +96,20 @@ class App extends React.Component {
       this.setState(exampleData);
   }
 
-  onChange = (e) => {
-    console.log(e.target.value)
-    this.props.history.push(`/${e.target.value}`);
-  }
+  // onChange = (e) => {
+  //   console.log(e.target.value)
+  //   this.props.history.push(`/${e.target.value}`);
+  // }
 
   render() {
     return (
       <Router>
         <AppWrapper>
-          <Header manualTitles={["Dach bauen", "Legomännchen bauen"]} onChange={this.onChange} />
+
+          <Header manualTitles={["Dach bauen", "Legomännchen bauen"]}  />
           <Main />
           <Footer />
+
         </AppWrapper>
       </Router>
     );
