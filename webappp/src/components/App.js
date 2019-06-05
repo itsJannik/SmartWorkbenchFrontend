@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router, Route, withRouter } from 'react-router-dom';
+import uniqid from 'uniqid';
+import history from '../history'
 
 import Header from './header/Header';
 import Main from './main/Main';
@@ -24,10 +26,13 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.state = {
-      data: {},
+      data: [],
       isLoading: false,
+      manualValue: "",
+      manualIndex: 0,
+      instructionIndex: 0
     };
   }
 
@@ -35,7 +40,7 @@ class App extends React.Component {
     /* Loading Simulation */
     this.setState({
       isLoading: true,
-      data: {},
+      // data: [],
     })
     /* fetch data here */
     // fetch("http://46.237.197.145:8080/Backend/webresources/generic")
@@ -93,27 +98,36 @@ class App extends React.Component {
           },
           ];
 
-      this.setState(exampleData);
+      this.setState({data: exampleData});
   }
 
-  // onChange = (e) => {
-  //   console.log(e.target.value)
-  //   this.props.history.push(`/${e.target.value}`);
-  // }
+  onChange = (e) => {
+    console.log(history)
+    console.log(e.target)
+    history.push(`/${e.target.value}`);
+    this.setState({
+        manualValue: e.target.value
+    })
+}
 
   render() {
+    const {data, manualValue} = this.state
     return (
-      <Router>
+      <Router history={history}>
         <AppWrapper>
-
-          <Header manualTitles={["Dach bauen", "Legomännchen bauen"]}  />
-          <Main />
+          <Header manualTitles={["Legohaus bauen", "Legomännchen bauen"]} manualValue={manualValue} onChange={this.onChange}/>
+          <Route exact path="/" component={() => <h1>welcome</h1>} />
+          {data.map((manual) => (
+            <Route path={`/${manual.manualTitle.toLowerCase().replace(" ", "-")}`} 
+            render={(props) => <Main manualInstructions={manual.manualInstructions}/>
+            }
+            key={uniqid()}/>
+          ))}
           <Footer />
-
         </AppWrapper>
       </Router>
     );
   }
 }
 
-export default App;
+export default (App);

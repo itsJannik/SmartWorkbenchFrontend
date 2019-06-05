@@ -22,41 +22,21 @@ const HeaderTitle = styled.h1`
     justify-self: start;
 `
 
-class Header extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedOption: ""
-        };
-    }
-    onChange = (e) => {
-        this.props.history.push(`/${e.target.value}`);
-        this.setState({
-            selectedOption: e.target.value
-        })
-        console.log(e.target)
-    }
-    render() {
-        const { manualTitles } = this.props
-        return (            
-            <HeaderWrapper>
-                <HeaderTitle>
-                    Smart Workbench
+const Header = ({ manualTitles, manualValue, onChange }) => (
+    <HeaderWrapper>
+        <HeaderTitle>
+            Smart Workbench
             </HeaderTitle>
-                <HeaderDropdown  value={this.state.selectedOption} onChange={this.onChange}>
-                    <option value="" hidden>Bauplan</option>
-                    {manualTitles.map((manualTitle) => (
-                        <option value={encodeURIComponent(manualTitle.toLowerCase())} 
-                        key={uniqid()}
-                        /*selected={encodeURIComponent(manualTitle.toLowerCase()) == this.state.selectedOption}*/>
-                            {manualTitle}
-                        </option>
-                    ))}
-                </HeaderDropdown>
-            </HeaderWrapper>
-        )
-    }
-}
+        <HeaderDropdown value={manualValue} onChange={onChange}>
+            <option value="" hidden>Bauplan</option>
+            {manualTitles.map((manualTitle) => (
+                <option value={manualTitle.toLowerCase().replace(" ", "-")}
+                    key={uniqid()}>
+                    {manualTitle}
+                </option>
+            ))}
+        </HeaderDropdown>
+    </HeaderWrapper>
+)
 
-// export default withRouter(Header);
-export default withRouter(Header);
+export default Header;

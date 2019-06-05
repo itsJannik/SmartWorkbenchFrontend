@@ -7,7 +7,7 @@ Um dir sämtliche Module und Abhängigkeiten zu installieren, solltest Du als er
 ## Schnittstellendokumentation ##
 Damit eine reibungslose Kommunikation zwischen Frontend und Backend geschehen kann 💫 müssen die jeweiligen Schnittstellen eindeutig definiert werden.
 
-Die Daten werden im *json*-Format ausgetauscht, wobei folgende Struktur zu beachten ist: Das Array `manuals` enthält alle Bauanleitungen, wobei jede Bauanleitung einen Titel (`manualTitle`) und Bauanweisungen (`manualInstructions`) hat. Die Bauanweisungen sind selbst wieder ein Array an durchzuführenden Schritten. jeder Schritt hat einen Titel (`instructionsTitle`), ein Bild zur Visualisierung (`instructionVisualization`) und eine textuelle Beschreibung, was genau zu tun ist (`instructionDescription`). Ein *json*-Objekt kann dann z.B. folgendermaßen aussehen:
+Die Daten werden im *json*-Format ausgetauscht, wobei folgende Struktur zu beachten ist: Das Array enthält alle Bauanleitungen, wobei jede Bauanleitung einen Titel (`manualTitle`) und Bauanweisungen (`manualInstructions`) hat. Die Bauanweisungen sind selbst wieder ein Array an durchzuführenden Schritten. jeder Schritt hat einen Titel (`instructionsTitle`), ein Bild zur Visualisierung (`instructionVisualization`) und eine textuelle Beschreibung, was genau zu tun ist (`instructionDescription`). Ein *json*-Objekt kann dann z.B. folgendermaßen aussehen:
 ```javascript
 manuals: [{
           manualTitle: "Legohaus bauen",

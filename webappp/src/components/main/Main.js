@@ -35,7 +35,7 @@ const Main = (props) => (
         <StepButton>
                 &#8249;
         </StepButton>
-        <Content />
+        <Content {...props}/>
         <StepButton>
             &#8250;
         </StepButton>
