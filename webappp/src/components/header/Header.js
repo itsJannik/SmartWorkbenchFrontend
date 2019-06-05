@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import uniqid from 'uniqid';
-import {convertToURLPath} from '../../utils/URL'
+import { convertToURLPath } from '../../utils/URL'
 
 const HeaderWrapper = styled.header`
     display: grid;
@@ -22,15 +22,22 @@ const HeaderTitle = styled.h1`
     justify-self: start;
 `
 
-const Header = ({ manualTitles, manualValue, onChange }) => (
+const Header = ({ manualTitles, manualValue, onChange, currentLocation }) => (
     <HeaderWrapper>
         <HeaderTitle>
             Smart Workbench
             </HeaderTitle>
-        <HeaderDropdown value={manualValue} onChange={onChange}>
-            <option value="" hidden>Bauplan</option>
+        <HeaderDropdown
+            value={currentLocation.replace("/","")} onChange={onChange}>
+                {
+                    (currentLocation === "/")?
+                    <option value="" hidden>Bauplan</option>:
+                    null
+                }
+            
             {manualTitles.map((manualTitle) => (
-                <option value={convertToURLPath(manualTitle)}
+                <option
+                    value={convertToURLPath(manualTitle)}
                     key={uniqid()}>
                     {manualTitle}
                 </option>

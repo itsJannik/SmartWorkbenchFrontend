@@ -1,13 +1,14 @@
 import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import uniqid from 'uniqid';
-import history from '../history'
+import history from '../history';
+import location from '../location';
 
 import Header from './header/Header';
 import Main from './main/Main';
 import Footer from './footer/Footer';
 import Home from './Home';
-import {convertToURLPath} from '../utils/URL'
+import { convertToURLPath } from '../utils/URL'
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
@@ -32,6 +33,7 @@ class App extends React.Component {
     this.state = {
       data: [],
       isLoading: false,
+      currentLocation: location,
       manualValue: "",
       manualIndex: 0,
       instructionIndex: 0
@@ -41,8 +43,9 @@ class App extends React.Component {
   componentDidMount() {
     this.setState({
       isLoading: true,
+      // manualValue: location.pathname
       // data: [],
-    })
+    });
     /* fetch data here */
     // fetch("http://46.237.197.145:8080/Backend/webresources/generic")
     //   .then((response) => {
@@ -110,12 +113,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { data, manualValue } = this.state
+    const { data, manualValue, currentLocation } = this.state
     const manualTitles = data.map(({ manualTitle }) => manualTitle)
     return (
-      <Router history={history}>
+      <Router history={history} location={location}>
         <AppWrapper>
           <Header
+            currentLocation={currentLocation}
             manualTitles={manualTitles}
             manualValue={manualValue}
             onChange={this.onChange}
@@ -125,7 +129,8 @@ class App extends React.Component {
           />
           {
             data.map((manual) => (
-              <Route path={`/${convertToURLPath(manual.manualTitle)}`}
+              <Route
+                path={`/${convertToURLPath(manual.manualTitle)}`}
                 render={(props) => <Main manualInstructions={manual.manualInstructions} />
                 }
                 key={uniqid()} />
