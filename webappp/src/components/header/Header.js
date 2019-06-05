@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, withRouter } from 'react-router-dom';
 import uniqid from 'uniqid';
+import {convertToURLPath} from '../../utils/URL'
 
 const HeaderWrapper = styled.header`
     display: grid;
@@ -30,7 +30,7 @@ const Header = ({ manualTitles, manualValue, onChange }) => (
         <HeaderDropdown value={manualValue} onChange={onChange}>
             <option value="" hidden>Bauplan</option>
             {manualTitles.map((manualTitle) => (
-                <option value={manualTitle.toLowerCase().replace(" ", "-")}
+                <option value={convertToURLPath(manualTitle)}
                     key={uniqid()}>
                     {manualTitle}
                 </option>
