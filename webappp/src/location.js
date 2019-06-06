@@ -1,3 +1,5 @@
-import {createLocation} from 'history'
+import { createBrowserHistory } from 'history';
 
-export default createLocation();
+const location = createBrowserHistory().location.pathname;
+
+export default location;

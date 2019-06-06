@@ -34,7 +34,7 @@ class App extends React.Component {
       data: [],
       isLoading: false,
       currentLocation: location,
-      manualValue: "",
+      manualValue: location.replace("/", ""),
       manualIndex: 0,
       instructionIndex: 0
     };

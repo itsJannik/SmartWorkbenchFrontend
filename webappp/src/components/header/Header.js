@@ -28,7 +28,8 @@ const Header = ({ manualTitles, manualValue, onChange, currentLocation }) => (
             Smart Workbench
             </HeaderTitle>
         <HeaderDropdown
-            value={currentLocation.replace("/","")} onChange={onChange}>
+            value={manualValue} 
+            onChange={onChange}>
                 {
                     (currentLocation === "/")?
                     <option value="" hidden>Bauplan</option>:
