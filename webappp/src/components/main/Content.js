@@ -13,8 +13,7 @@ const ContentImage = styled.img`
 `
 
 const ContentDescription = styled.p`
-`
-// muss noch in Route gewrapped werden  
+` 
 const Content = (props) => (
     <ContentWrapper>
         <ContentTitle>

@@ -36,13 +36,16 @@ const Header = ({ manualTitles, manualValue, onChange, currentLocation }) => (
                     null
                 }
             
-            {manualTitles.map((manualTitle) => (
+            {
+                manualTitles.map((manualTitle, manualIndex) => (
                 <option
                     value={convertToURLPath(manualTitle)}
+                    manual_index={manualIndex}
                     key={uniqid()}>
                     {manualTitle}
                 </option>
-            ))}
+            ))
+            }
         </HeaderDropdown>
     </HeaderWrapper>
 )

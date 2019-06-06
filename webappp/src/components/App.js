@@ -107,6 +107,9 @@ class App extends React.Component {
 
   onChange(event) {
     history.push(`/${event.target.value}`);
+    console.log(event)
+    console.log(event.target)
+    // console.log(event.target.manual_index)
     this.setState({
       manualValue: event.target.value
     })
