@@ -30,11 +30,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
+    this.redirectToHome = this.redirectToHome.bind(this);
     this.state = {
       data: [],
       isLoading: false,
-      currentLocation: location,
-      manualValue: location.replace("/", ""),
+      currentLocation: "",
+      manualValue: "",
       manualIndex: 0,
       instructionIndex: 0,
     };
@@ -42,7 +43,9 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      isLoading: true,
+      // isLoading: true,
+      currentLocation: location,
+      manualValue: location.replace("/", "")
       // data: [],
     });
     /* fetch data here */
@@ -104,6 +107,14 @@ class App extends React.Component {
     this.setState({ data: exampleData });
   }
 
+  redirectToHome() {
+    history.push("/");
+    this.setState({
+      currentLocation: "/",
+      manualValue: ""
+    })
+  }
+
   onChange(event) {
     history.push(`/${event.target.value}`);
     console.log(event)
@@ -124,6 +135,7 @@ class App extends React.Component {
             manualTitles={manualTitles}
             manualValue={manualValue}
             onChange={this.onChange}
+            redirectToHome={this.redirectToHome}
           />
           <Route exact path="/"
             component={Home}

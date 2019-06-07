@@ -33,17 +33,23 @@ const MainWrapper = styled.main`
 `
 const StartModal = styled.div`
     display: ${({ isModalVisible }) => isModalVisible ? `grid` : `none`};
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.9);
     z-index: 1;
     position: absolute;
-    height: 400px;
-    width: 400px;
+    height: 80%;
+    width: 100%;
+    grid-template-columns: auto;
+    justify-items: center;
+    align-items: center;
+    transition-property: background-color;
+    transition-duration: 2s;
 `
 const PlayButton = styled.img`
-    src: url(${props => props.src});
-    width: 100px;
-    height: 100px;
-    alt: "start";
+    width: 30vh;
+    height: 30vh;
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 class Main extends React.Component {
@@ -52,6 +58,7 @@ class Main extends React.Component {
         this.incrementStep = this.incrementStep.bind(this);
         this.decrementStep = this.decrementStep.bind(this);
         this.changeStep = this.changeStep.bind(this);
+        this.startManual = this.startManual.bind(this);
         this.state = {
             step: 1,
             totalSteps: 1,
@@ -77,6 +84,12 @@ class Main extends React.Component {
 
     changeStep(incrementBy) { this.setState((prevState) => ({ step: prevState.step + incrementBy })) }
 
+    startManual() {
+        this.setState({
+            isModalVisible: false
+        })
+    }
+
     render() {
         const { step, totalSteps, isModalVisible } = this.state
         return (
@@ -88,8 +101,8 @@ class Main extends React.Component {
                 <StepButton clickable={step < totalSteps} onClick={this.incrementStep}>
                     &#8250;
             </StepButton>
-            <StartModal isModalVisible={isModalVisible}>
-                <PlayButton src={"http://wptf.com/wp-content/uploads/2014/05/play-button.png"}/>
+            <StartModal isModalVisible={isModalVisible} onClick={this.startManual}>
+                <PlayButton src={"http://wptf.com/wp-content/uploads/2014/05/play-button.png"} alt={"starte Bauanleitung"}/>
             </StartModal>
             </MainWrapper>
         )

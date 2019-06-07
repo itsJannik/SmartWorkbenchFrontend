@@ -20,11 +20,14 @@ const HeaderDropdown = styled.select`
 `
 const HeaderTitle = styled.h1`
     justify-self: start;
+    &:hover {
+        cursor: pointer;
+    }
 `
 
-const Header = ({ manualTitles, manualValue, onChange, currentLocation }) => (
+const Header = ({ manualTitles, manualValue, onChange, currentLocation, redirectToHome }) => (
     <HeaderWrapper>
-        <HeaderTitle>
+        <HeaderTitle onClick={redirectToHome}>
             Smart Workbench
             </HeaderTitle>
         <HeaderDropdown
