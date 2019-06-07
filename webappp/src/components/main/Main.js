@@ -15,7 +15,7 @@ const StepButton = styled.a`
     margin-right: 10%;
     margin-left: 10%;
 
-    ${props => props.clickable && css`
+    ${({ clickable }) => clickable && css`
     &:hover {
       color: #eeeeee;
       background-color: #777777;
@@ -31,6 +31,20 @@ const MainWrapper = styled.main`
     grid-template-columns: 10% 80% 10%;
     align-items: center;
 `
+const StartModal = styled.div`
+    display: ${({ isModalVisible }) => isModalVisible ? `grid` : `none`};
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+    position: absolute;
+    height: 400px;
+    width: 400px;
+`
+const PlayButton = styled.img`
+    src: url(${props => props.src});
+    width: 100px;
+    height: 100px;
+    alt: "start";
+`
 
 class Main extends React.Component {
     constructor(props) {
@@ -40,7 +54,8 @@ class Main extends React.Component {
         this.changeStep = this.changeStep.bind(this);
         this.state = {
             step: 1,
-            totalSteps: 1
+            totalSteps: 1,
+            isModalVisible: true,
         }
     }
 
@@ -63,7 +78,7 @@ class Main extends React.Component {
     changeStep(incrementBy) { this.setState((prevState) => ({ step: prevState.step + incrementBy })) }
 
     render() {
-        const { step, totalSteps } = this.state
+        const { step, totalSteps, isModalVisible } = this.state
         return (
             <MainWrapper>
                 <StepButton clickable={step > 1} onClick={this.decrementStep}>
@@ -73,6 +88,9 @@ class Main extends React.Component {
                 <StepButton clickable={step < totalSteps} onClick={this.incrementStep}>
                     &#8250;
             </StepButton>
+            <StartModal isModalVisible={isModalVisible}>
+                <PlayButton src={"http://wptf.com/wp-content/uploads/2014/05/play-button.png"}/>
+            </StartModal>
             </MainWrapper>
         )
     }
