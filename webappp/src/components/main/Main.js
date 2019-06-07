@@ -30,16 +30,48 @@ const MainWrapper = styled.main`
     align-items: center;
 `
 
-const Main = (props) => (
-    <MainWrapper>
-        <StepButton>
-                &#8249;
-        </StepButton>
-        <Content {...props}/>
-        <StepButton>
-            &#8250;
-        </StepButton>
-    </MainWrapper>
-)
+class Main extends React.Component {
+    constructor(props) {
+        super(props);
+        this.incrementStep = this.incrementStep.bind(this);
+        this.decrementStep = this.decrementStep.bind(this);
+        this.changeStep = this.changeStep.bind(this);
+        this.state = {
+            step: 1,
+            totalSteps: 1
+        }
+    }
+
+    componentDidMount() {
+        const { manualInstructions } = this.props
+        this.setState({
+            totalSteps: manualInstructions.length
+        })
+    }
+
+    incrementStep() { this.changeStep(1) }
+    decrementStep() { this.changeStep(-1) }
+
+    changeStep(incrementBy) { this.setState((prevState) => ({ step: prevState.step + incrementBy })) }
+
+    render() {
+        const { step, totalSteps } = this.state
+        return (
+            <MainWrapper>
+                <StepButton disabled={step === 1}
+                    onClick={this.decrementStep}
+                >
+                    &#8249;
+            </StepButton>
+                <Content {...this.props} step={step} />
+                <StepButton disabled={step === totalSteps}
+                    onClick={this.incrementStep}
+                >
+                    &#8250;
+            </StepButton>
+            </MainWrapper>
+        )
+    }
+}
 
 export default Main;

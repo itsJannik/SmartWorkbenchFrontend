@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import legoManInstruction from '../../data/legoMan/legoInstruction.png';
+import uniqid from 'uniqid';
 
 const ContentWrapper = styled.section`
     /* one grid-column */
@@ -13,18 +14,26 @@ const ContentImage = styled.img`
 `
 
 const ContentDescription = styled.p`
-` 
-const Content = (props) => (
-    <ContentWrapper>
-        <ContentTitle>
-            {props.manualInstructions[0].instructionTitle}
-            Kopf und Körper zusammensetzen
-        </ContentTitle>
-        <ContentImage src={legoManInstruction} />
-        <ContentDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
-        </ContentDescription>
-    </ContentWrapper>
+`
+const Content = ({manualInstructions, step}) => (
+    manualInstructions.map((manualInstruction, manualId) => (
+        <ContentWrapper id={manualId+1} key={uniqid()} hidden={!(manualId+1 === step)}>
+            <ContentTitle>
+                {manualInstruction.instructionTitle}
+            </ContentTitle>
+            <ContentImage src={legoManInstruction} />
+            {/* <ContentImage src={instructionVisualization} /> */}
+            <ContentDescription>
+                {manualInstruction.instructionDescription}
+            </ContentDescription>
+        </ContentWrapper>
+    )
+)
+
+
+
+
+
 )
 
 export default Content;

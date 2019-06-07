@@ -36,14 +36,13 @@ class App extends React.Component {
       currentLocation: location,
       manualValue: location.replace("/", ""),
       manualIndex: 0,
-      instructionIndex: 0
+      instructionIndex: 0,
     };
   }
 
   componentDidMount() {
     this.setState({
       isLoading: true,
-      // manualValue: location.pathname
       // data: [],
     });
     /* fetch data here */
@@ -109,7 +108,6 @@ class App extends React.Component {
     history.push(`/${event.target.value}`);
     console.log(event)
     console.log(event.target)
-    // console.log(event.target.manual_index)
     this.setState({
       manualValue: event.target.value
     })
