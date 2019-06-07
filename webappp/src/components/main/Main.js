@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Content from './Content';
 
 const StepButton = styled.a`
@@ -14,14 +14,16 @@ const StepButton = styled.a`
     border-radius: 10%;
     margin-right: 10%;
     margin-left: 10%;
+
+    ${props => props.clickable && css`
     &:hover {
-        color: #eeeeee;
-        background-color: #777777;
-        cursor: pointer;
+      color: #eeeeee;
+      background-color: #777777;
+      cursor: pointer;
     }
-    /* display: grid;
-    align-content: center; */
+  `}
 `
+
 const MainWrapper = styled.main`
     /* this is a grid container */
     display: grid;
@@ -49,8 +51,14 @@ class Main extends React.Component {
         })
     }
 
-    incrementStep() { this.changeStep(1) }
-    decrementStep() { this.changeStep(-1) }
+    incrementStep() {
+        const { step, totalSteps } = this.state
+        if (step < totalSteps) this.changeStep(1);
+    }
+    decrementStep() {
+        const { step } = this.state
+        if (step > 1) this.changeStep(-1);
+    }
 
     changeStep(incrementBy) { this.setState((prevState) => ({ step: prevState.step + incrementBy })) }
 
@@ -58,15 +66,11 @@ class Main extends React.Component {
         const { step, totalSteps } = this.state
         return (
             <MainWrapper>
-                <StepButton disabled={step === 1}
-                    onClick={this.decrementStep}
-                >
+                <StepButton clickable={step > 1} onClick={this.decrementStep}>
                     &#8249;
             </StepButton>
                 <Content {...this.props} step={step} />
-                <StepButton disabled={step === totalSteps}
-                    onClick={this.incrementStep}
-                >
+                <StepButton clickable={step < totalSteps} onClick={this.incrementStep}>
                     &#8250;
             </StepButton>
             </MainWrapper>
