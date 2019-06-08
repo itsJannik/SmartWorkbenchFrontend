@@ -38,6 +38,7 @@ class App extends React.Component {
       manualValue: "",
       manualIndex: 0,
       instructionIndex: 0,
+      backEndURI: "http://80.138.18.183:8080/Backend/webresources/generic"
     };
   }
 
@@ -49,21 +50,22 @@ class App extends React.Component {
       // data: [],
     });
     /* fetch data here */
-    // fetch("http://46.237.197.145:8080/Backend/webresources/generic")
-    //   .then((response) => {
-    //     if (response.status != 200) {
-    //       console.log('Looks like there was a problem. Status Code: ' +
-    //         response.status);
-    //       return;
-    //     }
-    //     response.json()
-    //     .then((data => {
-    //       console.log(data);
-    //     }));
-    //   })
-    // .catch(function(err) {
-    //   console.log('Fetch Error :-S', err);
-    // });
+    const {backEndURI} = this.state;
+    fetch(backEndURI)
+      .then((response) => {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
+        response.json()
+        .then((data => {
+          console.log(data);
+        }));
+      })
+    .catch(function(err) {
+      console.log('Fetch Error :-S', err);
+    });
 
     // sobald uri von Lukas bekannt, die ID-Generierung in response verschieben
 
