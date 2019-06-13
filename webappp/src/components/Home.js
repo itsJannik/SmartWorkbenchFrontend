@@ -2,11 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HomeWrapper = styled.section`
+
+    grid-template-columns: auto;
+    margin: 5% 15% 5% 15%;
+    /* padding-left: 10%;
+    padding-right: 10%; */
 `
 
 const HomeHeading = styled.h3`
+    font-family: verdana;
 `
 const HomeDescription = styled.p`
+    margin-top: 2.5%;
 `
 
 const Home = (props) => (

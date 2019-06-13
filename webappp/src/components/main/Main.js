@@ -28,7 +28,7 @@ const MainWrapper = styled.main`
     /* this is a grid container */
     display: grid;
     /* one grid-column */
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 15% 70% 15%;
     align-items: center;
 `
 const StartModal = styled.div`

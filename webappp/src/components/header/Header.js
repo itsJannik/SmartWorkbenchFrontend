@@ -5,11 +5,12 @@ import { convertToURLPath } from '../../utils/URL'
 
 const HeaderWrapper = styled.header`
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 50% 50%;
     justify-content: space-evenly;
     align-content: center;
     background-color: #777777;
     color: #eeeeee;
+    font-family: Lucida Sans Unicode;
 `
 
 const HeaderDropdown = styled.select`
@@ -17,9 +18,13 @@ const HeaderDropdown = styled.select`
     color: #777777;
     /* this should allow the dropdown to be scalable */
     -webkit-appearance: menulist-button;
+    font-family: inherit;
+    margin-right: 30%;
 `
 const HeaderTitle = styled.h1`
     justify-self: start;
+    margin-left: 30%;
+    font-weight: bold;
     &:hover {
         cursor: pointer;
     }

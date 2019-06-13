@@ -9,6 +9,7 @@ const FooterWrapper = styled.footer`
     align-content: center;
     background-color: #777777;
     color: #eeeeee;
+    font-family: Lucida Sans Unicode;
 `
 const FooterLink = styled.a`
     &:hover {

@@ -8,6 +8,7 @@ const ContentWrapper = styled.section`
     grid-template-columns: auto;
 `
 const ContentTitle = styled.h2`
+    font-family: verdana;
 `
 const ContentImage = styled.img`
     max-width: 100%;
