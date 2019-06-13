@@ -6,7 +6,7 @@ const StepButton = styled.a`
     text-decoration: none;
     display: inline-block;
     color: #777777;
-    background-color: #eeeeee;
+    background-color: transparent;
     height: 20%;
     font-size: 10em;
     text-align: center;
@@ -14,6 +14,7 @@ const StepButton = styled.a`
     border-radius: 10%;
     margin-right: 10%;
     margin-left: 10%;
+    opacity: 0.5;
 
     ${({ clickable }) => clickable && css`
     &:hover {
@@ -21,6 +22,8 @@ const StepButton = styled.a`
       background-color: #777777;
       cursor: pointer;
     }
+    opacity: 1;
+    background-color: #eeeeee;
   `}
 `
 

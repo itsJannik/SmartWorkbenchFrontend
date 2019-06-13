@@ -6,6 +6,10 @@ import uniqid from 'uniqid';
 const ContentWrapper = styled.section`
     /* one grid-column */
     grid-template-columns: auto;
+    box-sizing: border-box;
+    border: 2px solid #000;
+    border-radius: 2%;
+    padding: 2%;
 `
 const ContentTitle = styled.h2`
     font-family: verdana;

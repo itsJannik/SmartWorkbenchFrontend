@@ -19,7 +19,10 @@ const HeaderDropdown = styled.select`
     /* this should allow the dropdown to be scalable */
     -webkit-appearance: menulist-button;
     font-family: inherit;
-    margin-right: 30%;
+    margin-right: 50%;
+    height: 70%;
+    /* margin-top: 15%; */
+    margin-bottom:15;
 `
 const HeaderTitle = styled.h1`
     justify-self: start;
