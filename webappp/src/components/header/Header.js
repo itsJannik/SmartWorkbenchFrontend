@@ -20,10 +20,19 @@ const HeaderDropdown = styled.select`
     -webkit-appearance: menulist-button;
     font-family: inherit;
     margin-right: 50%;
-    height: 70%;
+    /* height: 70%; */
     /* margin-top: 15%; */
     margin-bottom:15;
+    &:hover {
+        cursor: pointer;
+    }
 `
+const DropdownOption = styled.option`
+    /* &:hover {
+        cursor: pointer;
+    } */
+`
+
 const HeaderTitle = styled.h1`
     justify-self: start;
     margin-left: 30%;
@@ -43,7 +52,7 @@ const Header = ({ manualTitles, manualValue, onChange, currentLocation, redirect
             onChange={onChange}>
                 {
                     (currentLocation === "/")?
-                    <option value="" hidden>Bauplan</option>:
+                    <DropdownOption value="" hidden>Bauplan</DropdownOption>:
                     null
                 }
             

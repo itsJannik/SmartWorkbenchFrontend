@@ -15,7 +15,10 @@ const StepButton = styled.a`
     margin-right: 10%;
     margin-left: 10%;
     opacity: 0.5;
-
+    &:hover {
+        cursor: not-allowed;
+    }
+    
     ${({ clickable }) => clickable && css`
     &:hover {
       color: #eeeeee;
