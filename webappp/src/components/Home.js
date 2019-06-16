@@ -2,9 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HomeWrapper = styled.section`
-
+box-sizing: border-box;
+    border: 2px solid #000;
+    border-radius: 2%;
+    padding: 2%;
     grid-template-columns: auto;
-    margin: 5% 15% 5% 15%;
+    margin: 5% 15% 5% 13%;
     /* padding-left: 10%;
     padding-right: 10%; */
 `

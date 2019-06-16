@@ -70,37 +70,37 @@ class App extends React.Component {
     // sobald uri von Lukas bekannt, die ID-Generierung in response verschieben
 
     let exampleData = [{
-      manualTitle: "Legohaus bauen",
+      manualTitle: "Parallelschraubzwinge",
       manualInstructions: [
         {
-          instructionTitle: "Dach bauen",
+          instructionTitle: "Schritt 1",
           instructionVisualization: "",
-          instructionDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+          instructionDescription: "Zwei Stahl-Backen entnehmen\nGegenüberliegend platzieren",
         },
         {
-          instructionTitle: "Mauer bauen",
+          instructionTitle: "Schritt 2",
           instructionVisualization: "",
-          instructionDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
+          instructionDescription: "Eine Schraube entnehmen\nAn der vorderen Bohrung der rechten Backe ansetzen\nIn der gegenüberliegenden Bohrung der linken Backe verschrauben"
         },
         {
-          instructionTitle: "Dach und Mauer zusammensetzen",
+          instructionTitle: "Schritt 3",
           instructionVisualization: "",
-          instructionDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
+          instructionDescription: "Eine Schraube entnehmen\nAn der hinteren Bohrung der linken Backe ansetzen\nIn der gegenüberliegenden Bohrung der rechten Backe verschrauben"
         }
       ]
     },
     {
-      manualTitle: "Legomännchen bauen",
+      manualTitle: "Reisezahnbürste",
       manualInstructions: [
         {
-          instructionTitle: "Kopf und Körper zusammensetzen",
+          instructionTitle: "Schritt 1",
           instructionVisualization: "",
-          instructionDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+          instructionDescription: "Zahnbürste und Hülle entnehmen",
         },
         {
-          instructionTitle: "Körper und Beine zusammensetzen",
+          instructionTitle: "Schritt 2",
           instructionVisualization: "",
-          instructionDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
+          instructionDescription: "Zahnpasta entnehmen\nMit roter Kappe Deckel der Hülle einlegen\nHülle zusammenschieben und verschließen"
         },
       ]
     },

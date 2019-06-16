@@ -16,20 +16,30 @@ const ContentTitle = styled.h2`
 `
 const ContentImage = styled.img`
     max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 `
 
-const ContentDescription = styled.p`
+const ImageContainer = styled.div`
+height: 50vh;
 `
-const Content = ({manualInstructions, step}) => (
+
+const ContentDescription = styled.ul`
+    padding-left: 3%;
+`
+const Content = ({manualInstructions, step, instructionVisualization}) => (
     manualInstructions.map((manualInstruction, manualId) => (
         <ContentWrapper id={manualId+1} key={uniqid()} hidden={!(manualId+1 === step)}>
             <ContentTitle>
                 {manualInstruction.instructionTitle}
             </ContentTitle>
-            <ContentImage src={legoManInstruction} />
+            {/* <ContentImage src={legoManInstruction} /> */}
+            <ImageContainer>
             {/* <ContentImage src={instructionVisualization} /> */}
+            <ContentImage src={"https://www.shop-gum.de/bilder/produkte/gross/GUM-KFO-Zahnbuerste-weich.jpg"} />
+            </ImageContainer>
             <ContentDescription>
-                {manualInstruction.instructionDescription}
+                {manualInstruction.instructionDescription.split("\n").map((item, i) => <li key={i}>{item}</li>)}
             </ContentDescription>
         </ContentWrapper>
     )

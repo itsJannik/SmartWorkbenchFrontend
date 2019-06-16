@@ -34,7 +34,8 @@ const MainWrapper = styled.main`
     /* this is a grid container */
     display: grid;
     /* one grid-column */
-    grid-template-columns: 15% 70% 15%;
+    grid-template-columns: 12% 76% 12%;
+    grid-template-rows: auto;
     align-items: center;
 `
 const StartModal = styled.div`
