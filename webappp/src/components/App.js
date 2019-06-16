@@ -31,6 +31,7 @@ class App extends React.Component {
     super(props);
     this.onChange = this.onChange.bind(this);
     this.redirectToHome = this.redirectToHome.bind(this);
+    this.disableAsciiArtConsoleLog = this.disableAsciiArtConsoleLog.bind(this);
     this.state = {
       data: [],
       isLoading: false,
@@ -38,7 +39,8 @@ class App extends React.Component {
       manualValue: "",
       manualIndex: 0,
       instructionIndex: 0,
-      backEndURI: "http://80.138.18.183:8080/Backend/webresources/generic"
+      backEndURI: "http://80.138.18.183:8080/Backend/webresources/generic",
+      showConsolelog: true
     };
   }
 
@@ -107,6 +109,53 @@ class App extends React.Component {
     ];
 
     this.setState({ data: exampleData });
+
+    if (this.state.showConsolelog) {
+      console.log(`
+╔═╗┌┬┐┌─┐┬─┐┌┬┐  ╦ ╦┌─┐┬─┐┬┌─┌┐ ┌─┐┌┐┌┌─┐┬ ┬
+╚═╗│││├─┤├┬┘ │   ║║║│ │├┬┘├┴┐├┴┐├┤ ││││  ├─┤
+╚═╝┴ ┴┴ ┴┴└─ ┴   ╚╩╝└─┘┴└─┴ ┴└─┘└─┘┘└┘└─┘┴ ┴ 
+      
+/(,,,,,,*(,                                       
+    ,(*,****,(,      .#&%%##%%*                     
+       */,***,/,  %%/.    *%(%%(#%                  
+        (,****,(            %#%%%#(%                
+((#.      (,*****,(            ##%%%%%%#%*             
+//**((  //*******,(           %%%%%%%%%%%#%,           
+#*///************(          #%%%%%%%%%%%%%%%#         
+(//////*****///(*(/          &%%%%%%%%%%%%%%%*       
+ .(((//****//////*(.         ,#%%%%%%%%%%%%%        
+        .*((*///////(      ,....%%%%%%%%%%%%%       
+            /(/////(/(/  ,......,..&%%&*./%%%%%%%%  
+              (//(//((/*......,.     .     %%%%%%%& 
+                (///(*,.....,.            %%%%%%%%  
+                *##*,,,,,,,*               .&%&(    
+              ((/(*((,,,,/(/(*                      
+            ##/(((((/#(////((/(                     
+          ##((((((((((##/((/((/((                   
+        ##((((((((((##. ((/(/(((/(*                 
+      ###(##((((((##      ((((/(((/(((#(/*          
+    ##########((##*        .(/(((((////////(/       
+ .############(#.            *(//////////////(*     
+.##############(               (////////((/#///(     
+,##############*                 *(/////(/     /#(.    
+###############                   /(////((              
+.###########(                      (/////(*             
+.########                         ((/////(/           
+..,####,...                      .../#((((((, 
+    
+disable ASCII-Art Console Log 
+by calling disableAsciiArtConsoleLog();
+`);
+    }
+    window.disableAsciiArtConsoleLog = this.disableAsciiArtConsoleLog;
+  }
+
+  disableAsciiArtConsoleLog() {
+    this.setState({
+      showConsolelog: false
+    });
+    console.clear();
   }
 
   redirectToHome() {
