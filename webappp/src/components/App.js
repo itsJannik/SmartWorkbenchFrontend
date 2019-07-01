@@ -39,7 +39,10 @@ class App extends React.Component {
       manualValue: "",
       manualIndex: 0,
       instructionIndex: 0,
-      backEndURI: "http://80.138.18.183:8080/Backend/webresources/generic",
+      backEndDomain: "http://46.237.197.145:8080/",
+      mockServerDomain: "https://5d735b15-47c7-4468-9783-29d0773651d7.mock.pstmn.io/",
+      backendPath: "Backend/webresources/instructions",
+      // backEndPathStartManual: "Backend/webresources/startManual",
       showConsolelog: true
     };
   }
@@ -52,8 +55,9 @@ class App extends React.Component {
       // data: [],
     });
     /* fetch data here */
-    const {backEndURI} = this.state;
-    fetch(backEndURI)
+    const { backEndDomain, backendPath } = this.state;
+    const backEndUri = backEndDomain + backendPath;
+    fetch(backEndUri)
       .then((response) => {
         if (response.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' +
@@ -61,62 +65,62 @@ class App extends React.Component {
           return;
         }
         response.json()
-        .then((data => {
-          console.log(data);
-        }));
+          .then((data => {
+            console.log(data);
+            this.setState({ data })
+          }));
       })
-    .catch(function(err) {
-      console.log('Fetch Error :-S', err);
-    });
+      .catch(function (err) {
+        console.log('Fetch Error :-S', err);
+      });
 
     // sobald uri von Lukas bekannt, die ID-Generierung in response verschieben
 
-    let exampleData = [{
-      manualTitle: "Parallelschraubzwinge",
-      manualInstructions: [
-        {
-          instructionTitle: "Schritt 1",
-          instructionVisualization: "",
-          instructionDescription: "Zwei Stahl-Backen entnehmen\nGegenüberliegend platzieren",
-        },
-        {
-          instructionTitle: "Schritt 2",
-          instructionVisualization: "",
-          instructionDescription: "Eine Schraube entnehmen\nAn der vorderen Bohrung der rechten Backe ansetzen\nIn der gegenüberliegenden Bohrung der linken Backe verschrauben"
-        },
-        {
-          instructionTitle: "Schritt 3",
-          instructionVisualization: "",
-          instructionDescription: "Eine Schraube entnehmen\nAn der hinteren Bohrung der linken Backe ansetzen\nIn der gegenüberliegenden Bohrung der rechten Backe verschrauben"
-        }
-      ]
-    },
-    {
-      manualTitle: "Reisezahnbürste",
-      manualInstructions: [
-        {
-          instructionTitle: "Schritt 1",
-          instructionVisualization: "",
-          instructionDescription: "Zahnbürste und Hülle entnehmen",
-        },
-        {
-          instructionTitle: "Schritt 2",
-          instructionVisualization: "",
-          instructionDescription: "Zahnpasta entnehmen\nMit roter Kappe Deckel der Hülle einlegen\nHülle zusammenschieben und verschließen"
-        },
-      ]
-    },
-    ];
+    // let exampleData = [{
+    //   manualTitle: "Parallelschraubzwinge",
+    //   manualInstructions: [
+    //     {
+    //       instructionTitle: "Schritt 1",
+    //       instructionVisualization: "",
+    //       instructionDescription: "Zwei Stahl-Backen entnehmen\nGegenüberliegend platzieren",
+    //     },
+    //     {
+    //       instructionTitle: "Schritt 2",
+    //       instructionVisualization: "",
+    //       instructionDescription: "Eine Schraube entnehmen\nAn der vorderen Bohrung der rechten Backe ansetzen\nIn der gegenüberliegenden Bohrung der linken Backe verschrauben"
+    //     },
+    //     {
+    //       instructionTitle: "Schritt 3",
+    //       instructionVisualization: "",
+    //       instructionDescription: "Eine Schraube entnehmen\nAn der hinteren Bohrung der linken Backe ansetzen\nIn der gegenüberliegenden Bohrung der rechten Backe verschrauben"
+    //     }
+    //   ]
+    // },
+    // {
+    //   manualTitle: "Reisezahnbürste",
+    //   manualInstructions: [
+    //     {
+    //       instructionTitle: "Schritt 1",
+    //       instructionVisualization: "",
+    //       instructionDescription: "Zahnbürste und Hülle entnehmen",
+    //     },
+    //     {
+    //       instructionTitle: "Schritt 2",
+    //       instructionVisualization: "",
+    //       instructionDescription: "Zahnpasta entnehmen\nMit roter Kappe Deckel der Hülle einlegen\nHülle zusammenschieben und verschließen"
+    //     },
+    //   ]
+    // },
+    // ];
 
-    this.setState({ data: exampleData });
+    // this.setState({ data: exampleData });
 
     if (this.state.showConsolelog) {
       console.log(`
 ╔═╗┌┬┐┌─┐┬─┐┌┬┐  ╦ ╦┌─┐┬─┐┬┌─┌┐ ┌─┐┌┐┌┌─┐┬ ┬
 ╚═╗│││├─┤├┬┘ │   ║║║│ │├┬┘├┴┐├┴┐├┤ ││││  ├─┤
 ╚═╝┴ ┴┴ ┴┴└─ ┴   ╚╩╝└─┘┴└─┴ ┴└─┘└─┘┘└┘└─┘┴ ┴ 
-      
-/(,,,,,,*(,                                       
+                                          
     ,(*,****,(,      .#&%%##%%*                     
        */,***,/,  %%/.    *%(%%(#%                  
         (,****,(            %#%%%#(%                
@@ -176,7 +180,10 @@ by calling disableAsciiArtConsoleLog();
   }
 
   render() {
-    const { data, manualValue, currentLocation } = this.state
+    const { data, manualValue, currentLocation, backEndDomain, backendPath, mockServerDomain } = this.state
+    // const pathStartManual = backEndDomain + backEndPathStartManual;
+    // const pathStartManual = mockServerDomain + backEndPathStartManual;
+    const backEndUri = backEndDomain + backendPath
     const manualTitles = data.map(({ manualTitle }) => manualTitle)
     return (
       <Router history={history} location={location}>
@@ -195,7 +202,8 @@ by calling disableAsciiArtConsoleLog();
             data.map((manual) => (
               <Route
                 path={`/${convertToURLPath(manual.manualTitle)}`}
-                render={(props) => <Main manualInstructions={manual.manualInstructions} />
+                render={(props) =>
+                  <Main manualInstructions={manual.manualInstructions} backEndUri={backEndUri} />
                 }
                 key={uniqid()} />
             ))

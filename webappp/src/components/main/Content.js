@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import legoManInstruction from '../../data/legoMan/legoInstruction.png';
+// import legoManInstruction from '../../data/legoMan/legoInstruction.png';
 import uniqid from 'uniqid';
 
 const ContentWrapper = styled.section`
@@ -27,23 +27,23 @@ height: 50vh;
 const ContentDescription = styled.ul`
     padding-left: 3%;
 `
-const Content = ({manualInstructions, step, instructionVisualization}) => (
+const Content = ({ manualInstructions, step, instructionVisualization }) => (
     manualInstructions.map((manualInstruction, manualId) => (
-        <ContentWrapper id={manualId+1} key={uniqid()} hidden={!(manualId+1 === step)}>
+        <ContentWrapper id={manualId + 1} key={uniqid()} hidden={!(manualId + 1 === step)}>
             <ContentTitle>
                 {manualInstruction.instructionTitle}
             </ContentTitle>
             {/* <ContentImage src={legoManInstruction} /> */}
             <ImageContainer>
-            {/* <ContentImage src={instructionVisualization} /> */}
-            <ContentImage src={"https://www.shop-gum.de/bilder/produkte/gross/GUM-KFO-Zahnbuerste-weich.jpg"} />
+                {/* <ContentImage src={instructionVisualization} /> */}
+                <ContentImage src={"/images/body.png"} />
             </ImageContainer>
             <ContentDescription>
                 {manualInstruction.instructionDescription.split("\n").map((item, i) => <li key={i}>{item}</li>)}
             </ContentDescription>
         </ContentWrapper>
     )
-)
+    )
 
 
 
