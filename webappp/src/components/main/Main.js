@@ -106,62 +106,28 @@ class Main extends React.Component {
         console.log("putData url", url);
         console.log("ptDatadata", data);
         return fetch(url, {
-            method: 'PUT', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, cors, *same-origin
-            //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            //   credentials: 'same-origin', // include, *same-origin, omit
+            method: 'PUT',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            //   redirect: 'follow', // manual, *follow, error
-            //   referrer: 'no-referrer', // no-referrer, *client
-            body: JSON.stringify(data), // body data type must match "Content-Type" header
+            body: JSON.stringify(data)
         })
             .then(response => {
                 console.log(response);
                 return response.body;
-            }) // parses JSON response into native JavaScript objects 
+            })
             .then(responseBody => {
                 console.log(responseBody);
             })
-        //   .then(responseJson => console.log(responseJson))
     }
 
 
     startManual() {
-        // const uri = "https://5d735b15-47c7-4468-9783-29d0773651d7.mock.pstmn.io/Backend/webresources/instruction"
         this.setState({
             isModalVisible: false
         });
         this.putData();
-        // post to backend here
-        // fetch(pathStartManual, {
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-
-        //       },
-        //       method: "POST",
-        //       mode: "cors",
-        //       body: JSON.stringify({startManual: true})
-        // })
-        // .then((response) => {
-        //     if (response.status !== 200) {
-        //       console.log('Looks like there was a problem. Status Code: ' +
-        //         response.status);
-        //       return;
-        //     }
-        //     response.json()
-        //       .then((data => {
-        //         console.log(data);
-        //         this.setState({ data })
-        //       }));
-        //   })
-        //   .catch(function (err) {
-        //     console.log('Fetch Error :-S', err);
-        //   });
-
     }
 
 

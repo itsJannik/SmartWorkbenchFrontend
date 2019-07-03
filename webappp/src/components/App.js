@@ -131,8 +131,7 @@ by calling disableAsciiArtConsoleLog();
   }
 
   render() {
-    const { data, manualValue, currentLocation, backEndDomain, backendPath, mockServerDomain } = this.state;
-    // const mockServerUri = mockServerDomain + backEndPathStartManual;
+    const { data, manualValue, currentLocation, backEndDomain, backendPath } = this.state;
     const backEndUri = backEndDomain + backendPath;
     const manualTitles = data.map(({ manualTitle }) => manualTitle);
     return (
@@ -157,7 +156,6 @@ by calling disableAsciiArtConsoleLog();
                     manualInstructions={manual.manualInstructions}
                     backEndUri={backEndUri}
                     manualValue={manualValue}
-                    // manualVisualization={manual.instructionVisualization}
                   />
                 }
                 key={uniqid()} />
