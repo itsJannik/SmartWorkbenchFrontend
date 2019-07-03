@@ -10,20 +10,20 @@ const FooterWrapper = styled.footer`
     background-color: #777777;
     color: #eeeeee;
     font-family: Lucida Sans Unicode;
-`
+`;
+
 const FooterLink = styled.a`
     &:hover {
         cursor: pointer;
         text-decoration: underline;
     }
-`
+`;
 
-const Footer = (props) => (
+const Footer = (props) =>
     <FooterWrapper>
         <FooterLink>
             Hilfe
         </FooterLink>
     </FooterWrapper>
-)
 
 export default Footer;

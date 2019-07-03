@@ -91,8 +91,8 @@ class Main extends React.Component {
         this.putData();
     }
 
-     changeStep(incrementBy) {
-         this.setState((prevState) => {
+    changeStep(incrementBy) {
+        this.setState((prevState) => {
             return { step: prevState.step + incrementBy };
         });
     }
@@ -100,13 +100,11 @@ class Main extends React.Component {
     putData() {
         const { backEndUri, manualValue } = this.props;
         const { step } = this.state;
-        const url = backEndUri;
         const data = {
             manual: manualValue,
             step: step
         };
-        console.log("step sent to backend (put)", data.step);
-        return fetch(url, {
+        return fetch(backEndUri, {
             method: 'PUT',
             mode: 'cors',
             headers: {
@@ -114,16 +112,9 @@ class Main extends React.Component {
             },
             body: JSON.stringify(data)
         })
-        .catch(function (err) {
-            console.log('Fetch Error :-S', err);
-          });
-            // .then(response => {
-            //     console.log(response);
-            //     return response.body;
-            // })
-            // .then(responseBody => {
-            //     console.log(responseBody);
-            // })
+            .catch(function (err) {
+                console.log('Fetch Error :-S', err);
+            });
     }
 
 

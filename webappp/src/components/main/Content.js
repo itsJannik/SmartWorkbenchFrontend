@@ -29,22 +29,22 @@ const ContentDescription = styled.ul`
 `;
 
 const Content = ({ manualInstructions, step }) => {
-    return (
-        manualInstructions.map((manualInstruction, manualId) => (
-            <ContentWrapper id={manualId + 1} key={uniqid()} hidden={!(manualId + 1 === step)}>
-                <ContentTitle>
-                    {manualInstruction.instructionTitle}
-                </ContentTitle>
-                <ImageContainer>
-                    <ContentImage src={`/images/${manualInstruction.instructionVisualization}`} />
-                </ImageContainer>
-                <ContentDescription>
-                    {manualInstruction.instructionDescription.split("\n").map((item, i) => <li key={i}>{item}</li>)}
-                </ContentDescription>
-            </ContentWrapper>
-        )
-        )
-    )
+    return manualInstructions.map((manualInstruction, manualId) =>
+        <ContentWrapper id={manualId + 1} key={uniqid()} hidden={!(manualId + 1 === step)}>
+            <ContentTitle>
+                {manualInstruction.instructionTitle}
+            </ContentTitle>
+            <ImageContainer>
+                <ContentImage src={`/images/${manualInstruction.instructionVisualization}`} />
+            </ImageContainer>
+            <ContentDescription>
+                {
+                    manualInstruction.instructionDescription.split("\n").map((item, i) =>
+                        <li key={i}>{item}</li>)
+                }
+            </ContentDescription>
+        </ContentWrapper>
+    );
 }
 
 export default Content;

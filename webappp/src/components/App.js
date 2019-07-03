@@ -21,7 +21,8 @@ const AppWrapper = styled.div`
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-`
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,9 +37,7 @@ class App extends React.Component {
       manualIndex: 0,
       instructionIndex: 0,
       backEndDomain: "http://46.237.197.145:8080/",
-      mockServerDomain: "https://5d735b15-47c7-4468-9783-29d0773651d7.mock.pstmn.io/",
       backendPath: "Backend/webresources/instructions",
-      // backEndPathStartManual: "Backend/webresources/startManual",
       showConsolelog: true
     };
   }
@@ -58,7 +57,6 @@ class App extends React.Component {
         }
         response.json()
           .then((data => {
-            // console.log("manual from backedn", data);
             this.setState({ data });
           }));
       })
