@@ -58,7 +58,7 @@ class App extends React.Component {
         }
         response.json()
           .then((data => {
-            console.log("manual from backedn", data);
+            // console.log("manual from backedn", data);
             this.setState({ data });
           }));
       })
@@ -123,8 +123,6 @@ by calling disableAsciiArtConsoleLog();
 
   onChange(event) {
     history.push(`/${event.target.value}`);
-    console.log(event);
-    console.log(event.target);
     this.setState({
       manualValue: event.target.value
     });

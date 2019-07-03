@@ -79,20 +79,22 @@ class Main extends React.Component {
         });
     }
 
-    incrementStep() {
+    async incrementStep() {
         const { step, totalSteps } = this.state;
-        if (step < totalSteps) this.changeStep(1);
+        if (step < totalSteps) await this.changeStep(1);
         this.putData();
     }
 
-    decrementStep() {
-        const { step } = this.state
-        if (step > 1) this.changeStep(-1);
+    async decrementStep() {
+        const { step } = this.state;
+        if (step > 1) await this.changeStep(-1);
         this.putData();
     }
 
-    changeStep(incrementBy) {
-        this.setState((prevState) => ({ step: prevState.step + incrementBy }));
+     changeStep(incrementBy) {
+         this.setState((prevState) => {
+            return { step: prevState.step + incrementBy };
+        });
     }
 
     putData() {
@@ -103,8 +105,7 @@ class Main extends React.Component {
             manual: manualValue,
             step: step
         };
-        console.log("putData url", url);
-        console.log("ptDatadata", data);
+        console.log("step sent to backend (put)", data.step);
         return fetch(url, {
             method: 'PUT',
             mode: 'cors',
@@ -113,13 +114,16 @@ class Main extends React.Component {
             },
             body: JSON.stringify(data)
         })
-            .then(response => {
-                console.log(response);
-                return response.body;
-            })
-            .then(responseBody => {
-                console.log(responseBody);
-            })
+        .catch(function (err) {
+            console.log('Fetch Error :-S', err);
+          });
+            // .then(response => {
+            //     console.log(response);
+            //     return response.body;
+            // })
+            // .then(responseBody => {
+            //     console.log(responseBody);
+            // })
     }
 
 
@@ -132,7 +136,7 @@ class Main extends React.Component {
 
 
     render() {
-        const { step, totalSteps, isModalVisible } = this.state
+        const { step, totalSteps, isModalVisible } = this.state;
         return (
             <MainWrapper>
                 <StepButton clickable={step > 1} onClick={this.decrementStep}>
