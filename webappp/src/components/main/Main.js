@@ -18,7 +18,6 @@ const StepButton = styled.a`
     &:hover {
         cursor: not-allowed;
     }
-    
     ${({ clickable }) => clickable && css`
     &:hover {
       color: #eeeeee;
@@ -28,16 +27,15 @@ const StepButton = styled.a`
     opacity: 1;
     background-color: #eeeeee;
   `}
-`
+`;
 
 const MainWrapper = styled.main`
-    /* this is a grid container */
     display: grid;
-    /* one grid-column */
     grid-template-columns: 12% 76% 12%;
     grid-template-rows: auto;
     align-items: center;
-`
+`;
+
 const StartModal = styled.div`
     display: ${({ isModalVisible }) => isModalVisible ? `grid` : `none`};
     background: rgba(0,0,0,0.9);
@@ -50,14 +48,15 @@ const StartModal = styled.div`
     align-items: center;
     transition-property: background-color;
     transition-duration: 2s;
-`
+`;
+
 const PlayButton = styled.img`
     width: 30vh;
     height: 30vh;
     &:hover {
         cursor: pointer;
     }
-`
+`;
 
 class Main extends React.Component {
     constructor(props) {
@@ -70,86 +69,78 @@ class Main extends React.Component {
             step: 1,
             totalSteps: 1,
             isModalVisible: true,
-        }
+        };
     }
 
     componentDidMount() {
-        const { manualInstructions } = this.props
+        const { manualInstructions } = this.props;
         this.setState({
             totalSteps: manualInstructions.length
-        })
+        });
     }
 
     incrementStep() {
         const { step, totalSteps } = this.state;
-        
         if (step < totalSteps) this.changeStep(1);
-        const data = {
-            manual: "Schraubzwinge",
-            step: 1
-        }
-        this.putData(this.props.backEndUri, data);
+        this.putData();
     }
+
     decrementStep() {
         const { step } = this.state
         if (step > 1) this.changeStep(-1);
-        const data = {
-            manual: "Schraubzwinge",
-            step: 1
-        }
-        this.putData(this.props.backEndUri, data);
+        this.putData();
     }
 
-    changeStep(incrementBy) { this.setState((prevState) => ({ step: prevState.step + incrementBy })) }
+    changeStep(incrementBy) {
+        this.setState((prevState) => ({ step: prevState.step + incrementBy }));
+    }
 
-    putData(url = "", data = {}) {
-        // Default options are marked with *
+    putData() {
+        const { backEndUri, manualValue } = this.props;
+        const { step } = this.state;
+        const url = backEndUri;
+        const data = {
+            manual: manualValue,
+            step: step
+        };
         console.log("putData url", url);
         console.log("ptDatadata", data);
-          return fetch(url, {
-              method: 'PUT', // *GET, POST, PUT, DELETE, etc.
-              mode: 'cors', // no-cors, cors, *same-origin
+        return fetch(url, {
+            method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, cors, *same-origin
             //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             //   credentials: 'same-origin', // include, *same-origin, omit
-              headers: {
-                  'Content-Type': 'application/json',
-                  // 'Content-Type': 'application/x-www-form-urlencoded',
-              },
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
             //   redirect: 'follow', // manual, *follow, error
             //   referrer: 'no-referrer', // no-referrer, *client
-              body: JSON.stringify(data), // body data type must match "Content-Type" header
-          })
-          .then(response => {
-              console.log(response);
-              return response.body;
+            body: JSON.stringify(data), // body data type must match "Content-Type" header
+        })
+            .then(response => {
+                console.log(response);
+                return response.body;
             }) // parses JSON response into native JavaScript objects 
             .then(responseBody => {
                 console.log(responseBody);
             })
         //   .then(responseJson => console.log(responseJson))
-        }
+    }
 
 
     startManual() {
-        const {backEndUri} = this.props;
         // const uri = "https://5d735b15-47c7-4468-9783-29d0773651d7.mock.pstmn.io/Backend/webresources/instruction"
-        // console.log(pathStartManual);
-        // console.log(JSON.stringify({startManual: 1}));
-        console.log("startmanual backednuri", backEndUri)
         this.setState({
             isModalVisible: false
         });
-        const data = {
-            manual: "Schraubzwinge",
-            step: 1
-        }
-        this.putData(backEndUri, data);
+        this.putData();
         // post to backend here
         // fetch(pathStartManual, {
         //     headers: {
         //         'Accept': 'application/json',
         //         'Content-Type': 'application/json'
-                
+
         //       },
         //       method: "POST",
         //       mode: "cors",
@@ -170,7 +161,7 @@ class Main extends React.Component {
         //   .catch(function (err) {
         //     console.log('Fetch Error :-S', err);
         //   });
-        
+
     }
 
 
@@ -185,9 +176,9 @@ class Main extends React.Component {
                 <StepButton clickable={step < totalSteps} onClick={this.incrementStep}>
                     &#8250;
             </StepButton>
-            <StartModal isModalVisible={isModalVisible} >
-                <PlayButton onClick={this.startManual} src={"http://wptf.com/wp-content/uploads/2014/05/play-button.png"} alt={"starte Bauanleitung"}/>
-            </StartModal>
+                <StartModal isModalVisible={isModalVisible} >
+                    <PlayButton onClick={this.startManual} src={"http://wptf.com/wp-content/uploads/2014/05/play-button.png"} alt={"starte Bauanleitung"} />
+                </StartModal>
             </MainWrapper>
         )
     }
