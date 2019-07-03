@@ -27,14 +27,16 @@ height: 50vh;
 const ContentDescription = styled.ul`
     padding-left: 3%;
 `
-const Content = ({ manualInstructions, step, instructionVisualization="schraubzwinge/2.gif" }) => (
+const Content = ({ manualInstructions, step, instructionVisualization/*="schraubzwinge/2.gif"*/ }) => {
+    console.log(`/images/${instructionVisualization}`)
+    return(
     manualInstructions.map((manualInstruction, manualId) => (
         <ContentWrapper id={manualId + 1} key={uniqid()} hidden={!(manualId + 1 === step)}>
             <ContentTitle>
                 {manualInstruction.instructionTitle}
             </ContentTitle>
             <ImageContainer>
-                <ContentImage src={`/images/${instructionVisualization}`} />
+                <ContentImage src={`/images/${manualInstruction.instructionVisualization}`} />
             </ImageContainer>
             <ContentDescription>
                 {manualInstruction.instructionDescription.split("\n").map((item, i) => <li key={i}>{item}</li>)}
@@ -42,11 +44,6 @@ const Content = ({ manualInstructions, step, instructionVisualization="schraubzw
         </ContentWrapper>
     )
     )
-
-
-
-
-
-)
+)}
 
 export default Content;

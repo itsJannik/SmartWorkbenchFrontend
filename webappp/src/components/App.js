@@ -58,7 +58,7 @@ class App extends React.Component {
         }
         response.json()
           .then((data => {
-            console.log(data);
+            console.log("manual from backedn", data);
             this.setState({ data });
           }));
       })
@@ -157,6 +157,7 @@ by calling disableAsciiArtConsoleLog();
                     manualInstructions={manual.manualInstructions}
                     backEndUri={backEndUri}
                     manualValue={manualValue}
+                    // manualVisualization={manual.instructionVisualization}
                   />
                 }
                 key={uniqid()} />
