@@ -19,9 +19,9 @@ const FooterLink = styled.a`
     }
 `;
 
-const Footer = (props) =>
+const Footer = ({onHilfe}) =>
     <FooterWrapper>
-        <FooterLink>
+        <FooterLink onClick={onHilfe}>
             Hilfe
         </FooterLink>
     </FooterWrapper>

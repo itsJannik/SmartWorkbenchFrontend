@@ -8,6 +8,7 @@ import Header from './header/Header';
 import Main from './main/Main';
 import Footer from './footer/Footer';
 import Home from './Home';
+import HelpModal from './footer/HelpModal';
 import { convertToURLPath } from '../utils/URL';
 import styled from 'styled-components';
 
@@ -23,12 +24,14 @@ const AppWrapper = styled.div`
   margin: 0;
 `;
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
     this.redirectToHome = this.redirectToHome.bind(this);
     this.disableAsciiArtConsoleLog = this.disableAsciiArtConsoleLog.bind(this);
+    this.showHelp = this.showHelp.bind(this);
     this.state = {
       data: [],
       isLoading: false,
@@ -38,7 +41,8 @@ class App extends React.Component {
       instructionIndex: 0,
       backEndDomain: "http://46.237.197.145:8080/",
       backendPath: "Backend/webresources/instructions",
-      showConsolelog: true
+      showConsolelog: true,
+      isHelpModalVisible: false
     };
   }
 
@@ -126,8 +130,18 @@ by calling disableAsciiArtConsoleLog();
     });
   }
 
+  showHelp(event) {
+    this.setState({ isHelpModalVisible: true });
+  }
+
   render() {
-    const { data, manualValue, currentLocation, backEndDomain, backendPath } = this.state;
+    const { 
+      data, 
+      manualValue, 
+      currentLocation, 
+      backEndDomain, 
+      backendPath, 
+      isHelpModalVisible } = this.state;
     const backEndUri = backEndDomain + backendPath;
     const manualTitles = data.map(({ manualTitle }) => manualTitle);
     return (
@@ -157,7 +171,8 @@ by calling disableAsciiArtConsoleLog();
                 key={uniqid()} />
             ))
           }
-          <Footer />
+          <Footer onHilfe={this.showHelp} />
+          <HelpModal isHelpModalVisible={isHelpModalVisible} />
         </AppWrapper>
       </Router>
     );

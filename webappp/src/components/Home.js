@@ -7,17 +7,16 @@ box-sizing: border-box;
     border-radius: 2%;
     padding: 2%;
     grid-template-columns: auto;
-    margin: 5% 15% 5% 13%;
-    /* padding-left: 10%;
-    padding-right: 10%; */
-`
+    margin: 5% 15% 5% 15%;
+`;
 
 const HomeHeading = styled.h3`
     font-family: verdana;
-`
+`;
+
 const HomeDescription = styled.p`
     margin-top: 2.5%;
-`
+`;
 
 const Home = (props) => (
     <HomeWrapper>
