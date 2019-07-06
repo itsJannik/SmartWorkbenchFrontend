@@ -32,6 +32,7 @@ class App extends React.Component {
     this.redirectToHome = this.redirectToHome.bind(this);
     this.disableAsciiArtConsoleLog = this.disableAsciiArtConsoleLog.bind(this);
     this.showHelp = this.showHelp.bind(this);
+    this.closeHelpModal = this.closeHelpModal.bind(this);
     this.state = {
       data: [],
       isLoading: false,
@@ -134,6 +135,12 @@ by calling disableAsciiArtConsoleLog();
     this.setState({ isHelpModalVisible: true });
   }
 
+  closeHelpModal(event) {
+    if (event.target.id === "help_modal") {
+      this.setState({isHelpModalVisible:false});
+    }
+  }
+
   render() {
     const { 
       data, 
@@ -172,7 +179,7 @@ by calling disableAsciiArtConsoleLog();
             ))
           }
           <Footer onHilfe={this.showHelp} />
-          <HelpModal isHelpModalVisible={isHelpModalVisible} />
+          <HelpModal isHelpModalVisible={isHelpModalVisible} closeHelpModal={this.closeHelpModal}/>
         </AppWrapper>
       </Router>
     );
